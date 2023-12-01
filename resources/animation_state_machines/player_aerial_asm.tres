@@ -1,0 +1,75 @@
+[gd_resource type="AnimationNodeStateMachine" load_steps=17 format=3 uid="uid://bexps86oh8wsu"]
+
+[ext_resource type="AnimationNodeStateMachine" uid="uid://cl8ul0i40bllk" path="res://resources/animation_state_machines/player_glide_asm.tres" id="1_wf6iu"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_t3lnn"]
+animation = &"Falling Block Left"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_p7q5m"]
+animation = &"Falling Block Right"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_7pfgj"]
+animation = &"Falling Left"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_hsxvc"]
+animation = &"Falling Right"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_g4ile"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_lofot"]
+advance_mode = 2
+advance_expression = "block_dir == Vector2(-1, 0)"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_i5yqs"]
+advance_mode = 2
+advance_expression = "block_dir != Vector2(-1, 0)"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_kylgy"]
+advance_mode = 2
+advance_expression = "block_dir != Vector2(1, 0)"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_1sfsn"]
+advance_mode = 2
+advance_expression = "block_dir == Vector2(1, 0)"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_oc33h"]
+advance_mode = 2
+advance_expression = "block_dir == Vector2(0, -1)"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_0xtpc"]
+advance_mode = 2
+advance_expression = "block_dir != Vector2(0, -1)"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_hnm1i"]
+advance_mode = 2
+advance_expression = "facing_dir == 1"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_qcfar"]
+advance_mode = 2
+advance_expression = "facing_dir != 1"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_5ods6"]
+advance_mode = 2
+advance_expression = "block_dir == Vector2(1, 0)"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_dcwm6"]
+advance_mode = 2
+advance_expression = "block_dir == Vector2(0, -1)"
+
+[resource]
+state_machine_type = 1
+states/End/position = Vector2(676, 195)
+"states/Falling Block Left/node" = SubResource("AnimationNodeAnimation_t3lnn")
+"states/Falling Block Left/position" = Vector2(320, 125)
+"states/Falling Block Right/node" = SubResource("AnimationNodeAnimation_p7q5m")
+"states/Falling Block Right/position" = Vector2(1066, 125)
+"states/Falling Left/node" = SubResource("AnimationNodeAnimation_7pfgj")
+"states/Falling Left/position" = Vector2(590, 125)
+"states/Falling Right/node" = SubResource("AnimationNodeAnimation_hsxvc")
+"states/Falling Right/position" = Vector2(773, 37)
+states/GlideStateMachine/node = ExtResource("1_wf6iu")
+states/GlideStateMachine/position = Vector2(590, -17)
+states/Start/position = Vector2(590, 195)
+transitions = ["Start", "Falling Left", SubResource("AnimationNodeStateMachineTransition_g4ile"), "Falling Left", "Falling Block Left", SubResource("AnimationNodeStateMachineTransition_lofot"), "Falling Block Left", "Falling Left", SubResource("AnimationNodeStateMachineTransition_i5yqs"), "Falling Block Right", "Falling Left", SubResource("AnimationNodeStateMachineTransition_kylgy"), "Falling Left", "Falling Block Right", SubResource("AnimationNodeStateMachineTransition_1sfsn"), "Falling Left", "GlideStateMachine", SubResource("AnimationNodeStateMachineTransition_oc33h"), "GlideStateMachine", "Falling Left", SubResource("AnimationNodeStateMachineTransition_0xtpc"), "Falling Left", "Falling Right", SubResource("AnimationNodeStateMachineTransition_hnm1i"), "Falling Right", "Falling Left", SubResource("AnimationNodeStateMachineTransition_qcfar"), "Falling Right", "Falling Block Right", SubResource("AnimationNodeStateMachineTransition_5ods6"), "Falling Right", "GlideStateMachine", SubResource("AnimationNodeStateMachineTransition_dcwm6")]
+graph_offset = Vector2(-63, -48)

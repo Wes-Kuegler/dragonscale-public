@@ -1,0 +1,71 @@
+[gd_scene load_steps=6 format=3 uid="uid://b7ijbpq7g3g4a"]
+
+[ext_resource type="Script" path="res://scripts/objects/projectile.gd" id="1_0tibu"]
+[ext_resource type="Texture2D" uid="uid://dyqggy24q51tg" path="res://assets/art/arrow/Arrow Projectile.png" id="2_x76ym"]
+[ext_resource type="PackedScene" uid="uid://x3wqumjckefo" path="res://scenes/objects/arrow_rigid_body.tscn" id="2_xk11u"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_h7l7g"]
+radius = 4.0
+height = 24.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_prt83"]
+size = Vector2(4, 14)
+
+[node name="Projectile" type="AnimatableBody2D"]
+z_index = -1
+collision_layer = 8
+sync_to_physics = false
+script = ExtResource("1_0tibu")
+velocity = Vector2(250, 0)
+physics_arrow_scene = ExtResource("2_xk11u")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_h7l7g")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+scale = Vector2(1, 0.5)
+
+[node name="QueueFreeTimer" type="Timer" parent="."]
+wait_time = 0.6
+one_shot = true
+
+[node name="WorldDetector" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldDetector"]
+position = Vector2(0, 1.94707e-07)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_prt83")
+
+[node name="MobDetector" type="Area2D" parent="."]
+visible = false
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MobDetector"]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_h7l7g")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_x76ym")
+offset = Vector2(0, 0.5)
+metadata/_aseprite_wizard_config_ = {
+"keep_anim_length": false,
+"layer": "",
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"op_exp": false,
+"player": "",
+"source": "res://assets/Arrow Projectile.aseprite"
+}
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
+[connection signal="timeout" from="QueueFreeTimer" to="." method="_on_queue_free_timer_timeout"]
+[connection signal="body_entered" from="WorldDetector" to="." method="_on_world_detector_body_entered"]
+[connection signal="body_entered" from="MobDetector" to="." method="_on_mob_detector_body_entered"]

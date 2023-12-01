@@ -1,0 +1,130 @@
+[gd_resource type="AnimationNodeStateMachine" load_steps=25 format=3 uid="uid://d158gryj87ial"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_vdc3r"]
+animation = &"Jump Block Left"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ywyjw"]
+animation = &"Jump Block Right"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_vnd7y"]
+animation = &"Jump Left"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_q4k1d"]
+animation = &"Jump Upblock Left"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_goidq"]
+animation = &"Jump Upblock Right"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ikox3"]
+animation = &"Jump Right"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_am2te"]
+advance_mode = 2
+advance_expression = "facing_dir == -1"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_p866a"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_cqa4g"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_rpc66"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_s04ht"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_kadih"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_e4jd6"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_oft8n"]
+reset = false
+switch_mode = 1
+advance_mode = 2
+advance_expression = "block_dir == Vector2(-1, 0)"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_5sg5l"]
+reset = false
+switch_mode = 1
+advance_mode = 2
+advance_expression = "block_dir == Vector2(0, -1)"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_s2q6f"]
+reset = false
+switch_mode = 1
+advance_mode = 2
+advance_expression = "block_dir != Vector2(0, -1)"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_j4dl1"]
+reset = false
+switch_mode = 1
+advance_mode = 2
+advance_expression = "block_dir != Vector2(-1, 0)"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_trqcb"]
+reset = false
+switch_mode = 1
+advance_mode = 2
+advance_expression = "block_dir == Vector2(0, -1)"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_2tp70"]
+reset = false
+switch_mode = 1
+advance_mode = 2
+advance_expression = "block_dir == Vector2(1, 0)"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_tpqk8"]
+reset = false
+switch_mode = 1
+advance_mode = 2
+advance_expression = "block_dir != Vector2(0, -1)"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_eu7m1"]
+reset = false
+switch_mode = 1
+advance_mode = 2
+advance_expression = "block_dir != Vector2(1, 0)"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_0mlsh"]
+reset = false
+switch_mode = 1
+advance_mode = 2
+advance_expression = "block_dir == Vector2(1, 0) or facing_dir == 1"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_i070e"]
+reset = false
+switch_mode = 1
+advance_mode = 2
+advance_expression = "block_dir == Vector2(-1, 0) or facing_dir == -1"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_1de4s"]
+advance_mode = 2
+advance_expression = "facing_dir == 1"
+
+[resource]
+state_machine_type = 1
+states/End/position = Vector2(361, 386)
+states/Jump/node = SubResource("AnimationNodeAnimation_ikox3")
+states/Jump/position = Vector2(606, 207)
+"states/Jump Block Left/node" = SubResource("AnimationNodeAnimation_vdc3r")
+"states/Jump Block Left/position" = Vector2(123, 307)
+"states/Jump Block Right/node" = SubResource("AnimationNodeAnimation_ywyjw")
+"states/Jump Block Right/position" = Vector2(606, 307)
+"states/Jump Left/node" = SubResource("AnimationNodeAnimation_vnd7y")
+"states/Jump Left/position" = Vector2(123, 207)
+"states/Jump Upblock Left/node" = SubResource("AnimationNodeAnimation_q4k1d")
+"states/Jump Upblock Left/position" = Vector2(123, 104)
+"states/Jump Upblock Right/node" = SubResource("AnimationNodeAnimation_goidq")
+"states/Jump Upblock Right/position" = Vector2(606, 104)
+states/Start/position = Vector2(361, 104)
+transitions = ["Start", "Jump Left", SubResource("AnimationNodeStateMachineTransition_am2te"), "Jump", "End", SubResource("AnimationNodeStateMachineTransition_p866a"), "Jump Block Right", "End", SubResource("AnimationNodeStateMachineTransition_cqa4g"), "Jump Block Left", "End", SubResource("AnimationNodeStateMachineTransition_rpc66"), "Jump Left", "End", SubResource("AnimationNodeStateMachineTransition_s04ht"), "Jump Upblock Right", "End", SubResource("AnimationNodeStateMachineTransition_kadih"), "Jump Upblock Left", "End", SubResource("AnimationNodeStateMachineTransition_e4jd6"), "Jump Left", "Jump Block Left", SubResource("AnimationNodeStateMachineTransition_oft8n"), "Jump Left", "Jump Upblock Left", SubResource("AnimationNodeStateMachineTransition_5sg5l"), "Jump Upblock Left", "Jump Left", SubResource("AnimationNodeStateMachineTransition_s2q6f"), "Jump Block Left", "Jump Left", SubResource("AnimationNodeStateMachineTransition_j4dl1"), "Jump", "Jump Upblock Right", SubResource("AnimationNodeStateMachineTransition_trqcb"), "Jump", "Jump Block Right", SubResource("AnimationNodeStateMachineTransition_2tp70"), "Jump Upblock Right", "Jump", SubResource("AnimationNodeStateMachineTransition_tpqk8"), "Jump Block Right", "Jump", SubResource("AnimationNodeStateMachineTransition_eu7m1"), "Jump Left", "Jump", SubResource("AnimationNodeStateMachineTransition_0mlsh"), "Jump", "Jump Left", SubResource("AnimationNodeStateMachineTransition_i070e"), "Start", "Jump", SubResource("AnimationNodeStateMachineTransition_1de4s")]
+graph_offset = Vector2(-292, 24)

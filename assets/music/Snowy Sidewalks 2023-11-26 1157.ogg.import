@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://b1fmf0ym7vyc0"
+path="res://.godot/imported/Snowy Sidewalks 2023-11-26 1157.ogg-791c16caf7921f02e396a2f9ed3efa9e.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/music/Snowy Sidewalks 2023-11-26 1157.ogg"
+dest_files=["res://.godot/imported/Snowy Sidewalks 2023-11-26 1157.ogg-791c16caf7921f02e396a2f9ed3efa9e.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

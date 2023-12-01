@@ -1,0 +1,34 @@
+[gd_scene load_steps=4 format=3 uid="uid://x3wqumjckefo"]
+
+[ext_resource type="Texture2D" uid="uid://dyqggy24q51tg" path="res://assets/art/arrow/Arrow Projectile.png" id="1_jvu7f"]
+[ext_resource type="Script" path="res://scripts/objects/arrow_rigid_body.gd" id="1_rrm8u"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6ddrx"]
+radius = 4.0
+height = 24.0
+
+[node name="ArrowRigidBody" type="RigidBody2D"]
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("1_rrm8u")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("1_jvu7f")
+offset = Vector2(0, 0.5)
+metadata/_aseprite_wizard_config_ = {
+"keep_anim_length": false,
+"layer": "",
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"op_exp": false,
+"player": "",
+"source": "res://assets/Arrow Projectile.aseprite"
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_6ddrx")

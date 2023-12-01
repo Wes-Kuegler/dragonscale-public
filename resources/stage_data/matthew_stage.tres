@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="StageData" load_steps=3 format=3 uid="uid://sf0tccywc4x1"]
+
+[ext_resource type="Script" path="res://scripts/resources/stage_data.gd" id="1_8c0bv"]
+[ext_resource type="AudioStream" uid="uid://b4gtk3a4cknx8" path="res://assets/music/Water Temple 2023-11-26 1227.ogg" id="2_x4t8w"]
+
+[resource]
+script = ExtResource("1_8c0bv")
+id = 31.0
+name = "Gully Gorge"
+stage_track = ExtResource("2_x4t8w")
+scene_path = "res://scenes/stages/matthew_stage.tscn"

@@ -1,0 +1,65 @@
+[gd_scene load_steps=10 format=3 uid="uid://voevtww44eus"]
+
+[ext_resource type="Theme" uid="uid://bo07iel4au107" path="res://resources/ui_theme.tres" id="1_1yvfo"]
+[ext_resource type="Script" path="res://scripts/ui/ui.gd" id="1_v2efn"]
+[ext_resource type="PackedScene" uid="uid://dcfavaoamkmkx" path="res://scenes/ui/victory_screen.tscn" id="2_jd3i8"]
+[ext_resource type="PackedScene" uid="uid://0a54gobsxncr" path="res://scenes/ui/stage_select.tscn" id="3_cj0iq"]
+[ext_resource type="PackedScene" uid="uid://di8x4p5as3hj2" path="res://scenes/ui/pause_menu.tscn" id="3_kpear"]
+[ext_resource type="Texture2D" uid="uid://b5xb634rjoavc" path="res://assets/art/ui/Cryo's Mini GUI/GUI/GUI_4x.png" id="4_xlpwq"]
+[ext_resource type="StyleBox" uid="uid://d1fj2wwm4gp0y" path="res://resources/styleboxes/brown_outline_style_box_texture.tres" id="6_kdaoe"]
+[ext_resource type="PackedScene" uid="uid://dbrmh1f07f2va" path="res://scenes/ui/parallax_background.tscn" id="6_l5yp2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h28a1"]
+atlas = ExtResource("4_xlpwq")
+region = Rect2(384, 0, 96, 96)
+
+[node name="UI" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_v2efn")
+
+[node name="VictoryScreen" parent="." instance=ExtResource("2_jd3i8")]
+visible = false
+
+[node name="PauseMenu" parent="." instance=ExtResource("3_kpear")]
+visible = false
+
+[node name="ClockMarginContainer" type="MarginContainer" parent="."]
+visible = false
+offset_right = 108.0
+offset_bottom = 47.0
+size_flags_horizontal = 6
+size_flags_vertical = 4
+theme = ExtResource("1_1yvfo")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="ClockMarginContainer"]
+layout_mode = 2
+theme = ExtResource("1_1yvfo")
+texture = SubResource("AtlasTexture_h28a1")
+patch_margin_left = 15
+patch_margin_top = 15
+patch_margin_right = 15
+patch_margin_bottom = 15
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="StageTimeLabel" type="Label" parent="ClockMarginContainer"]
+layout_mode = 2
+theme_override_styles/normal = ExtResource("6_kdaoe")
+text = "0.00"
+horizontal_alignment = 1
+vertical_alignment = 1
+justification_flags = 162
+
+[node name="StageSelectContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("1_1yvfo")
+
+[node name="StageSelect" parent="StageSelectContainer" instance=ExtResource("3_cj0iq")]
+layout_mode = 2
+
+[node name="ParallaxBackground" parent="." instance=ExtResource("6_l5yp2")]

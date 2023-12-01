@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://dr2bhfug40e1g"]
+
+[ext_resource type="Script" path="res://scripts/objects/bat_path.gd" id="1_l541c"]
+[ext_resource type="PackedScene" uid="uid://bk0sfuqps6jl5" path="res://scenes/characters/bat.tscn" id="2_rowap"]
+
+[sub_resource type="Curve2D" id="Curve2D_23pf2"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 100, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 3
+
+[node name="BatPath" type="Path2D"]
+curve = SubResource("Curve2D_23pf2")
+script = ExtResource("1_l541c")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="."]
+rotates = false
+
+[node name="Bat" parent="PathFollow2D" instance=ExtResource("2_rowap")]

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="StageData" load_steps=3 format=3 uid="uid://cigmqctc1q4ts"]
+
+[ext_resource type="Script" path="res://scripts/resources/stage_data.gd" id="1_2t87d"]
+[ext_resource type="AudioStream" uid="uid://cefmanwiegrcm" path="res://assets/music/Pop Danx Theme 2023-11-26 1216.ogg" id="2_avqol"]
+
+[resource]
+script = ExtResource("1_2t87d")
+id = 10.0
+name = "Tutorial"
+stage_track = ExtResource("2_avqol")
+scene_path = "res://scenes/stages/tutorial.tscn"

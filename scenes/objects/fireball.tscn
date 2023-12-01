@@ -1,0 +1,141 @@
+[gd_scene load_steps=17 format=3 uid="uid://drl1w5dj1npey"]
+
+[ext_resource type="Texture2D" uid="uid://b7whpdaxvf2mo" path="res://assets/art/objects/fireball.png" id="2_45ft8"]
+[ext_resource type="Script" path="res://scripts/objects/fireball.gd" id="2_m0v4m"]
+[ext_resource type="Texture2D" uid="uid://ecnir02endm7" path="res://assets/art/fx/explosion.png" id="3_tq3hy"]
+[ext_resource type="AudioStream" uid="uid://0oai1mqti6vs" path="res://assets/sounds/Retro Explosion Short 15.wav" id="4_4c2v1"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_exd4c"]
+radius = 7.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ci4e5"]
+size = Vector2(12, 2)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p5usp"]
+atlas = ExtResource("2_45ft8")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2flic"]
+atlas = ExtResource("2_45ft8")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hlr3c"]
+atlas = ExtResource("2_45ft8")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o5yor"]
+atlas = ExtResource("2_45ft8")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nvuwt"]
+atlas = ExtResource("3_tq3hy")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gn222"]
+atlas = ExtResource("3_tq3hy")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lij71"]
+atlas = ExtResource("3_tq3hy")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_av3tm"]
+atlas = ExtResource("3_tq3hy")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_c1fle"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p5usp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2flic")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hlr3c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o5yor")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nvuwt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gn222")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lij71")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_av3tm")
+}],
+"loop": false,
+"name": &"explosion",
+"speed": 10.0
+}]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_fgp63"]
+streams_count = 1
+random_pitch = 1.2
+stream_0/stream = ExtResource("4_4c2v1")
+stream_0/weight = 1.0
+
+[node name="Fireball" type="AnimatableBody2D"]
+collision_layer = 8
+collision_mask = 5
+sync_to_physics = false
+script = ExtResource("2_m0v4m")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("CircleShape2D_exd4c")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(0, -7)
+shape = SubResource("RectangleShape2D_ci4e5")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_c1fle")
+metadata/_aseprite_wizard_config_ = {
+"layer": "",
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"op_exp": true,
+"source": ""
+}
+metadata/_edit_lock_ = true
+
+[node name="WorldDetector" type="Area2D" parent="."]
+visible = false
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldDetector"]
+visible = false
+shape = SubResource("CircleShape2D_exd4c")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+metadata/_edit_lock_ = true
+
+[node name="QueueFreeTimer" type="Timer" parent="."]
+wait_time = 2.5
+one_shot = true
+
+[node name="ExplosionSoundPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_fgp63")
+volume_db = -10.0
+
+[connection signal="body_entered" from="WorldDetector" to="." method="_on_world_detector_body_entered"]
+[connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
+[connection signal="timeout" from="QueueFreeTimer" to="." method="_on_queue_free_timer_timeout"]

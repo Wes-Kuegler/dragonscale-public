@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://l13ln8wfg7qt"]
+
+[ext_resource type="Script" path="res://scripts/main.gd" id="1_27oju"]
+[ext_resource type="PackedScene" uid="uid://voevtww44eus" path="res://scenes/ui/ui.tscn" id="1_uivvn"]
+
+[node name="Main" type="Node"]
+process_mode = 3
+script = ExtResource("1_27oju")
+
+[node name="UI" parent="." instance=ExtResource("1_uivvn")]
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+volume_db = -10.0
+autoplay = true
+bus = &"Music"

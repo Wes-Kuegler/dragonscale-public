@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="StageData" load_steps=3 format=3 uid="uid://5gothcga34h3"]
+
+[ext_resource type="Script" path="res://scripts/resources/stage_data.gd" id="1_60ng6"]
+[ext_resource type="AudioStream" uid="uid://b1fmf0ym7vyc0" path="res://assets/music/Snowy Sidewalks 2023-11-26 1157.ogg" id="2_cq68t"]
+
+[resource]
+script = ExtResource("1_60ng6")
+id = 61.0
+name = "Proving Grounds (Classic)"
+stage_track = ExtResource("2_cq68t")
+scene_path = "res://scenes/stages/proving_grounds_old.tscn"

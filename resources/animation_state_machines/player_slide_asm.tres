@@ -1,0 +1,27 @@
+[gd_resource type="AnimationNodeStateMachine" load_steps=6 format=3 uid="uid://cv1cdf2y1jiyg"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_xrq16"]
+animation = &"Block Down Left"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_2f2oy"]
+animation = &"Block Down Right"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_0ssql"]
+advance_mode = 2
+advance_expression = "facing_dir == 1"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_004wg"]
+advance_mode = 2
+advance_expression = "facing_dir == -1"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_0a7hi"]
+advance_mode = 2
+
+[resource]
+state_machine_type = 1
+"states/Block Down Left/node" = SubResource("AnimationNodeAnimation_xrq16")
+"states/Block Down Left/position" = Vector2(365, 100)
+"states/Block Down Right/node" = SubResource("AnimationNodeAnimation_2f2oy")
+"states/Block Down Right/position" = Vector2(602, 100)
+transitions = ["Block Down Left", "Block Down Right", SubResource("AnimationNodeStateMachineTransition_0ssql"), "Block Down Right", "Block Down Left", SubResource("AnimationNodeStateMachineTransition_004wg"), "Start", "Block Down Left", SubResource("AnimationNodeStateMachineTransition_0a7hi")]
+graph_offset = Vector2(26, -82)

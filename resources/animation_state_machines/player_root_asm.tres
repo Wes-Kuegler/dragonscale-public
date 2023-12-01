@@ -1,0 +1,50 @@
+[gd_resource type="AnimationNodeStateMachine" load_steps=13 format=3 uid="uid://cogunvcnbgjnn"]
+
+[ext_resource type="AnimationNodeStateMachine" uid="uid://mbhdx2rosjgw" path="res://resources/animation_state_machines/player_run_asm.tres" id="1_aa3cu"]
+[ext_resource type="AnimationNodeStateMachine" uid="uid://bexps86oh8wsu" path="res://resources/animation_state_machines/player_aerial_asm.tres" id="1_hdwrf"]
+[ext_resource type="AnimationNodeStateMachine" uid="uid://d158gryj87ial" path="res://resources/animation_state_machines/player_jump_asm.tres" id="2_ppi1g"]
+[ext_resource type="AnimationNodeStateMachine" uid="uid://cv1cdf2y1jiyg" path="res://resources/animation_state_machines/player_slide_asm.tres" id="3_utpog"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_1vk7h"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_15xrl"]
+advance_mode = 2
+advance_expression = "!is_touching_floor()"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_i7sui"]
+advance_mode = 2
+advance_expression = "is_touching_floor()"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_o3sso"]
+advance_mode = 2
+advance_expression = "block_dir == Vector2(0, 1)"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_racsf"]
+advance_mode = 2
+advance_expression = "block_dir != Vector2(0, 1) and is_touching_floor()"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_edwbw"]
+advance_mode = 2
+advance_expression = "block_dir == Vector2(0, 1)"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_odnu3"]
+advance_mode = 2
+advance_expression = "block_dir != Vector2(0, 1) and !is_touching_floor()"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_difrk"]
+switch_mode = 2
+advance_mode = 2
+
+[resource]
+states/AerialStateMachine/node = ExtResource("1_hdwrf")
+states/AerialStateMachine/position = Vector2(370, 66)
+states/JumpStateMachine/node = ExtResource("2_ppi1g")
+states/JumpStateMachine/position = Vector2(75, 66)
+states/RunStateMachine/node = ExtResource("1_aa3cu")
+states/RunStateMachine/position = Vector2(370, 196)
+states/SlideStateMachine/node = ExtResource("3_utpog")
+states/SlideStateMachine/position = Vector2(610, 66)
+states/Start/position = Vector2(200, 196)
+transitions = ["Start", "RunStateMachine", SubResource("AnimationNodeStateMachineTransition_1vk7h"), "RunStateMachine", "AerialStateMachine", SubResource("AnimationNodeStateMachineTransition_15xrl"), "AerialStateMachine", "RunStateMachine", SubResource("AnimationNodeStateMachineTransition_i7sui"), "AerialStateMachine", "SlideStateMachine", SubResource("AnimationNodeStateMachineTransition_o3sso"), "SlideStateMachine", "RunStateMachine", SubResource("AnimationNodeStateMachineTransition_racsf"), "RunStateMachine", "SlideStateMachine", SubResource("AnimationNodeStateMachineTransition_edwbw"), "SlideStateMachine", "AerialStateMachine", SubResource("AnimationNodeStateMachineTransition_odnu3"), "JumpStateMachine", "AerialStateMachine", SubResource("AnimationNodeStateMachineTransition_difrk")]
+graph_offset = Vector2(-197, -23)

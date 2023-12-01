@@ -1,0 +1,20 @@
+[gd_resource type="StyleBoxTexture" load_steps=4 format=3 uid="uid://cukishydiuqet"]
+
+[ext_resource type="Texture2D" uid="uid://b5xb634rjoavc" path="res://assets/art/ui/Cryo's Mini GUI/GUI/GUI_4x.png" id="1_qp514"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bc86u"]
+atlas = ExtResource("1_qp514")
+region = Rect2(192, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5kfdl"]
+atlas = SubResource("AtlasTexture_bc86u")
+region = Rect2(384, 0, 96, 96)
+
+[resource]
+texture = SubResource("AtlasTexture_5kfdl")
+texture_margin_left = 12.0
+texture_margin_top = 12.0
+texture_margin_right = 12.0
+texture_margin_bottom = 12.0
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1

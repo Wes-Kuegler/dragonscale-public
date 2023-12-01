@@ -1,0 +1,14 @@
+[gd_resource type="StyleBoxTexture" load_steps=3 format=3 uid="uid://b2hkmdjogmrcl"]
+
+[ext_resource type="Texture2D" uid="uid://c34nipkkdxpm0" path="res://assets/art/ui/Cryo's Mini GUI/Buttons/buttons_4x.png" id="1_wwxxu"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t4c5n"]
+atlas = ExtResource("1_wwxxu")
+region = Rect2(128, 0, 96, 64)
+
+[resource]
+texture = SubResource("AtlasTexture_t4c5n")
+texture_margin_left = 14.0
+texture_margin_top = 14.0
+texture_margin_right = 14.0
+texture_margin_bottom = 14.0

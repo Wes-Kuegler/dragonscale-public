@@ -1,0 +1,71 @@
+[gd_scene load_steps=5 format=3 uid="uid://cbvhsbn1jokdt"]
+
+[ext_resource type="Theme" uid="uid://bo07iel4au107" path="res://resources/ui_theme.tres" id="1_w0gmy"]
+[ext_resource type="PackedScene" uid="uid://cvkjktdkwhrq8" path="res://scenes/ui/volume_slider.tscn" id="2_2ydc0"]
+[ext_resource type="Script" path="res://scripts/ui/sound_menu.gd" id="2_fcaxf"]
+[ext_resource type="StyleBox" uid="uid://d1fj2wwm4gp0y" path="res://resources/styleboxes/brown_outline_style_box_texture.tres" id="3_ri4cc"]
+
+[node name="SoundMenu" type="PanelContainer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -184.5
+offset_top = -126.0
+offset_right = 184.5
+offset_bottom = 126.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_w0gmy")
+script = ExtResource("2_fcaxf")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 30
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_styles/normal = ExtResource("3_ri4cc")
+text = "Master Volume"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MasterVolumeHSlider" parent="MarginContainer/VBoxContainer" instance=ExtResource("2_2ydc0")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 6
+min_value = -60.0
+max_value = 0.0
+value = 0.0
+
+[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_styles/normal = ExtResource("3_ri4cc")
+text = "Music Volume"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MusicVolumeHSlider" parent="MarginContainer/VBoxContainer" instance=ExtResource("2_2ydc0")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 6
+min_value = -60.0
+max_value = 0.0
+value = 0.0
+
+[node name="BackButton" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Back"
+
+[connection signal="drag_ended" from="MarginContainer/VBoxContainer/MasterVolumeHSlider" to="." method="_on_master_volume_h_slider_drag_ended"]
+[connection signal="drag_ended" from="MarginContainer/VBoxContainer/MusicVolumeHSlider" to="." method="_on_music_volume_h_slider_drag_ended"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/BackButton" to="." method="_on_back_button_pressed"]

@@ -1,0 +1,111 @@
+[gd_scene load_steps=7 format=3 uid="uid://dcfavaoamkmkx"]
+
+[ext_resource type="Theme" uid="uid://bo07iel4au107" path="res://resources/ui_theme.tres" id="1_wtii6"]
+[ext_resource type="Script" path="res://scripts/ui/victory_screen.gd" id="2_6pgul"]
+[ext_resource type="Resource" uid="uid://bmn6x0bey4rxj" path="res://resources/stage_data/proving_grounds.tres" id="3_sc03v"]
+[ext_resource type="Texture2D" uid="uid://b5xb634rjoavc" path="res://assets/art/ui/Cryo's Mini GUI/GUI/GUI_4x.png" id="3_t5hac"]
+[ext_resource type="StyleBox" uid="uid://d1fj2wwm4gp0y" path="res://resources/styleboxes/brown_outline_style_box_texture.tres" id="4_kcakg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m7mj5"]
+atlas = ExtResource("3_t5hac")
+region = Rect2(384, 0, 96, 96)
+
+[node name="VictoryScreen" type="MarginContainer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -191.0
+offset_top = -149.0
+offset_right = 192.0
+offset_bottom = 126.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("1_wtii6")
+script = ExtResource("2_6pgul")
+final_stage = ExtResource("3_sc03v")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 2
+texture = SubResource("AtlasTexture_m7mj5")
+patch_margin_left = 15
+patch_margin_top = 15
+patch_margin_right = 15
+patch_margin_bottom = 15
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/normal = ExtResource("4_kcakg")
+text = "Victory!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "Time: "
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="TimeLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "0.00"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "Best Time: "
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="BestTimeLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "0.00"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RestartButton" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Restart"
+
+[node name="StageSelectButton" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Stage Select"
+
+[node name="EndButton" type="Button" parent="MarginContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+text = "Finish Game"
+
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/RestartButton" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/StageSelectButton" to="." method="_on_stage_select_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/EndButton" to="." method="_on_end_button_pressed"]

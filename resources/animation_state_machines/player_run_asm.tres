@@ -1,0 +1,231 @@
+[gd_resource type="AnimationNodeStateMachine" load_steps=44 format=3 uid="uid://mbhdx2rosjgw"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_n53st"]
+animation = &"Block Left Idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_n5rha"]
+animation = &"Block Right Idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_fmint"]
+animation = &"Block Up Left Idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_gu1ly"]
+animation = &"Block Up Left Walk"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_a07th"]
+animation = &"Block Up Right Idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_8el10"]
+animation = &"Block Up Right Walk"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_aq7wq"]
+animation = &"BlockWalk Left"
+play_mode = 1
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_jishc"]
+animation = &"BlockWalk Left"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_7mrhy"]
+animation = &"BlockWalk Right"
+play_mode = 1
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_pkhvh"]
+animation = &"BlockWalk Right"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_wfdcc"]
+animation = &"Idle Left"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_7vbqh"]
+animation = &"Idle Right"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_d3o6l"]
+animation = &"Walk Left"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_r16ws"]
+animation = &"Walk Right"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_s4433"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_otclr"]
+advance_mode = 2
+advance_expression = "velocity.x != 0"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_dcrws"]
+advance_mode = 2
+advance_expression = "velocity.x == 0"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_1k3oe"]
+advance_mode = 2
+advance_expression = "velocity.x == 0"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_k814u"]
+advance_mode = 2
+advance_expression = "velocity.x != 0"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_2lf4w"]
+priority = 0
+advance_mode = 2
+advance_expression = "facing_dir == 1"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_duoyo"]
+priority = 0
+advance_mode = 2
+advance_expression = "facing_dir == -1"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_vh1gm"]
+reset = false
+priority = 2
+switch_mode = 1
+advance_mode = 2
+advance_expression = "block_dir == Vector2(-1, 0)"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_6upg6"]
+reset = false
+priority = 2
+switch_mode = 1
+advance_mode = 2
+advance_expression = "block_dir == Vector2(1, 0)"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_c6ccr"]
+reset = false
+switch_mode = 1
+advance_mode = 2
+advance_expression = "block_dir != Vector2(1, 0) or velocity.x <= 0"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_v2pqd"]
+reset = false
+switch_mode = 1
+advance_mode = 2
+advance_expression = "block_dir != Vector2(-1, 0) or velocity.x >= 0"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_qch0o"]
+priority = 2
+advance_mode = 2
+advance_expression = "blocking"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_otam6"]
+advance_mode = 2
+advance_expression = "!blocking or velocity.x != 0"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_tl35w"]
+priority = 2
+advance_mode = 2
+advance_expression = "blocking"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_sr48p"]
+advance_mode = 2
+advance_expression = "!blocking or velocity.x != 0"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_74piv"]
+advance_mode = 2
+advance_expression = "block_dir == Vector2(1, 0)"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_5t0br"]
+advance_mode = 2
+advance_expression = "block_dir == Vector2(-1, 0)"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_o1qa5"]
+priority = 2
+advance_mode = 2
+advance_expression = "block_dir == Vector2(0, -1)"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_0h6a1"]
+advance_mode = 2
+advance_expression = "block_dir != Vector2(0, -1) or velocity.x != 0"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_c1iuc"]
+priority = 2
+advance_mode = 2
+advance_expression = "block_dir == Vector2(0, -1)"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_gp2jn"]
+advance_mode = 2
+advance_expression = "block_dir != Vector2(0, -1) or velocity.x != 0"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_6o810"]
+reset = false
+priority = 2
+switch_mode = 1
+advance_mode = 2
+advance_expression = "block_dir == Vector2(-1, 0)"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_5bubs"]
+reset = false
+switch_mode = 1
+advance_mode = 2
+advance_expression = "block_dir != Vector2(-1, 0) or velocity.x <= 0"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_sro2a"]
+reset = false
+priority = 2
+switch_mode = 1
+advance_mode = 2
+advance_expression = "block_dir == Vector2(1, 0)"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_mr7gq"]
+reset = false
+switch_mode = 1
+advance_mode = 2
+advance_expression = "block_dir != Vector2(1, 0) or velocity.x >= 0"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_b8bja"]
+reset = false
+priority = 2
+switch_mode = 1
+advance_mode = 2
+advance_expression = "block_dir == Vector2(0, -1)"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_78cc6"]
+reset = false
+switch_mode = 1
+advance_mode = 2
+advance_expression = "block_dir != Vector2(0, -1) or velocity.x <= 0"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_0xq7v"]
+reset = false
+switch_mode = 1
+advance_mode = 2
+advance_expression = "block_dir != Vector2(0, -1) or velocity.x >= 0"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_r8wly"]
+reset = false
+priority = 2
+switch_mode = 1
+advance_mode = 2
+advance_expression = "block_dir == Vector2(0, -1)"
+
+[resource]
+state_machine_type = 1
+"states/Block Left Idle/node" = SubResource("AnimationNodeAnimation_n53st")
+"states/Block Left Idle/position" = Vector2(376, 245)
+"states/Block Right Idle/node" = SubResource("AnimationNodeAnimation_n5rha")
+"states/Block Right Idle/position" = Vector2(729, 245)
+"states/Block Up Left Idle/node" = SubResource("AnimationNodeAnimation_fmint")
+"states/Block Up Left Idle/position" = Vector2(172, 245)
+"states/Block Up Left Walk/node" = SubResource("AnimationNodeAnimation_gu1ly")
+"states/Block Up Left Walk/position" = Vector2(150, -77)
+"states/Block Up Right Idle/node" = SubResource("AnimationNodeAnimation_a07th")
+"states/Block Up Right Idle/position" = Vector2(938, 245)
+"states/Block Up Right Walk/node" = SubResource("AnimationNodeAnimation_8el10")
+"states/Block Up Right Walk/position" = Vector2(949, -77)
+"states/BlockWalk Left/node" = SubResource("AnimationNodeAnimation_jishc")
+"states/BlockWalk Left/position" = Vector2(376, -77)
+"states/BlockWalk Left Reverse/node" = SubResource("AnimationNodeAnimation_aq7wq")
+"states/BlockWalk Left Reverse/position" = Vector2(949, 42)
+"states/BlockWalk Right/node" = SubResource("AnimationNodeAnimation_pkhvh")
+"states/BlockWalk Right/position" = Vector2(729, -77)
+"states/BlockWalk Right Reverse/node" = SubResource("AnimationNodeAnimation_7mrhy")
+"states/BlockWalk Right Reverse/position" = Vector2(142, 42)
+states/End/position = Vector2(600, 101)
+"states/Idle Left/node" = SubResource("AnimationNodeAnimation_wfdcc")
+"states/Idle Left/position" = Vector2(376, 162)
+"states/Idle Right/node" = SubResource("AnimationNodeAnimation_7vbqh")
+"states/Idle Right/position" = Vector2(729, 162)
+states/Start/position = Vector2(513, 101)
+"states/Walk Left/node" = SubResource("AnimationNodeAnimation_d3o6l")
+"states/Walk Left/position" = Vector2(376, 42)
+"states/Walk Right/node" = SubResource("AnimationNodeAnimation_r16ws")
+"states/Walk Right/position" = Vector2(729, 42)
+transitions = ["Start", "Idle Right", SubResource("AnimationNodeStateMachineTransition_s4433"), "Idle Right", "Walk Right", SubResource("AnimationNodeStateMachineTransition_otclr"), "Walk Left", "Idle Left", SubResource("AnimationNodeStateMachineTransition_dcrws"), "Walk Right", "Idle Right", SubResource("AnimationNodeStateMachineTransition_1k3oe"), "Idle Left", "Walk Left", SubResource("AnimationNodeStateMachineTransition_k814u"), "Walk Left", "Walk Right", SubResource("AnimationNodeStateMachineTransition_2lf4w"), "Walk Right", "Walk Left", SubResource("AnimationNodeStateMachineTransition_duoyo"), "Walk Left", "BlockWalk Left", SubResource("AnimationNodeStateMachineTransition_vh1gm"), "Walk Right", "BlockWalk Right", SubResource("AnimationNodeStateMachineTransition_6upg6"), "BlockWalk Right", "Walk Right", SubResource("AnimationNodeStateMachineTransition_c6ccr"), "BlockWalk Left", "Walk Left", SubResource("AnimationNodeStateMachineTransition_v2pqd"), "Idle Right", "Block Right Idle", SubResource("AnimationNodeStateMachineTransition_qch0o"), "Block Right Idle", "Idle Right", SubResource("AnimationNodeStateMachineTransition_otam6"), "Idle Left", "Block Left Idle", SubResource("AnimationNodeStateMachineTransition_tl35w"), "Block Left Idle", "Idle Left", SubResource("AnimationNodeStateMachineTransition_sr48p"), "Block Left Idle", "Block Right Idle", SubResource("AnimationNodeStateMachineTransition_74piv"), "Block Right Idle", "Block Left Idle", SubResource("AnimationNodeStateMachineTransition_5t0br"), "Block Left Idle", "Block Up Left Idle", SubResource("AnimationNodeStateMachineTransition_o1qa5"), "Block Up Left Idle", "Block Left Idle", SubResource("AnimationNodeStateMachineTransition_0h6a1"), "Block Right Idle", "Block Up Right Idle", SubResource("AnimationNodeStateMachineTransition_c1iuc"), "Block Up Right Idle", "Block Right Idle", SubResource("AnimationNodeStateMachineTransition_gp2jn"), "Walk Right", "BlockWalk Left Reverse", SubResource("AnimationNodeStateMachineTransition_6o810"), "BlockWalk Left Reverse", "Walk Right", SubResource("AnimationNodeStateMachineTransition_5bubs"), "Walk Left", "BlockWalk Right Reverse", SubResource("AnimationNodeStateMachineTransition_sro2a"), "BlockWalk Right Reverse", "Walk Left", SubResource("AnimationNodeStateMachineTransition_mr7gq"), "Walk Right", "Block Up Right Walk", SubResource("AnimationNodeStateMachineTransition_b8bja"), "Block Up Right Walk", "Walk Right", SubResource("AnimationNodeStateMachineTransition_78cc6"), "Block Up Left Walk", "Walk Left", SubResource("AnimationNodeStateMachineTransition_0xq7v"), "Walk Left", "Block Up Left Walk", SubResource("AnimationNodeStateMachineTransition_r8wly")]
+graph_offset = Vector2(-50, -130)

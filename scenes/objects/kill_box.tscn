@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://irtrdr40kese"]
+
+[ext_resource type="Script" path="res://scripts/objects/kill_box.gd" id="1_7sdcq"]
+
+[node name="KillBox" type="Area2D"]
+collision_layer = 0
+script = ExtResource("1_7sdcq")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://cm15a70yr5cc6"]
+
+[ext_resource type="TileSet" uid="uid://dm5ol7sr1gxws" path="res://resources/new_tile_set.tres" id="1_6xc8f"]
+
+[node name="TileMap" type="TileMap"]
+scale = Vector2(2, 2)
+tile_set = ExtResource("1_6xc8f")
+format = 2
+layer_0/name = "world"

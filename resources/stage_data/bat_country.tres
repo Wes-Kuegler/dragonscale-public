@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="StageData" load_steps=3 format=3 uid="uid://bkmibjgxo4iwr"]
+
+[ext_resource type="Script" path="res://scripts/resources/stage_data.gd" id="1_fpqsh"]
+[ext_resource type="AudioStream" uid="uid://sy6ri38uw6qe" path="res://assets/music/Cave Enterance 2023-11-26 1148.ogg" id="2_5d3y0"]
+
+[resource]
+script = ExtResource("1_fpqsh")
+id = 41.0
+name = "Bat Country"
+stage_track = ExtResource("2_5d3y0")
+scene_path = "res://scenes/stages/bat_country.tscn"

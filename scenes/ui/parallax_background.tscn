@@ -1,0 +1,45 @@
+[gd_scene load_steps=3 format=3 uid="uid://dbrmh1f07f2va"]
+
+[ext_resource type="Texture2D" uid="uid://byie0mg47n2q2" path="res://assets/art/tiles/background_2.png" id="1_4yykm"]
+[ext_resource type="Texture2D" uid="uid://bjtdfdlu52eb" path="res://assets/art/tiles/background_1.png" id="2_hemb3"]
+
+[node name="ParallaxBackground" type="ParallaxBackground"]
+scroll_ignore_camera_zoom = true
+
+[node name="ParallaxLayerBackground" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.5, 0)
+motion_mirroring = Vector2(744, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxLayerBackground"]
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("1_4yykm")
+centered = false
+
+[node name="ParallaxLayerBackground2" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.5, 0)
+motion_mirroring = Vector2(744, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxLayerBackground2"]
+position = Vector2(744, 0)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("1_4yykm")
+centered = false
+
+[node name="ParallaxLayerClouds" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.75, 0)
+motion_mirroring = Vector2(744, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxLayerClouds"]
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_hemb3")
+centered = false
+
+[node name="ParallaxLayerClouds2" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.75, 0)
+motion_mirroring = Vector2(744, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxLayerClouds2"]
+position = Vector2(744, 0)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_hemb3")
+centered = false

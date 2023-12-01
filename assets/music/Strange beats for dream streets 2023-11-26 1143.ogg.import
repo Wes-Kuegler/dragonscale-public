@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://crsb601o3kh7e"
+path="res://.godot/imported/Strange beats for dream streets 2023-11-26 1143.ogg-5eca43dba6710db10f377832388b304d.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/music/Strange beats for dream streets 2023-11-26 1143.ogg"
+dest_files=["res://.godot/imported/Strange beats for dream streets 2023-11-26 1143.ogg-5eca43dba6710db10f377832388b304d.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

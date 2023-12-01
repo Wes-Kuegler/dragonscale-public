@@ -1,0 +1,3 @@
+rm ./export/web/web.zip
+zip ./export/web/web.zip ./export/web/*
+butler push ./export/web/web.zip marsoupial/dragonscale:HTML5

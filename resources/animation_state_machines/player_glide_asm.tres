@@ -1,0 +1,28 @@
+[gd_resource type="AnimationNodeStateMachine" load_steps=6 format=3 uid="uid://cl8ul0i40bllk"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6v47c"]
+animation = &"Falling UpBlock left"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_apy1y"]
+animation = &"Falling UpBlock Right"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_3lmkh"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_dsf23"]
+advance_mode = 2
+advance_expression = "facing_dir == 1"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_e05so"]
+advance_mode = 2
+advance_expression = "facing_dir == -1"
+
+[resource]
+states/End/position = Vector2(626, 162)
+"states/Falling UpBlock Left/node" = SubResource("AnimationNodeAnimation_6v47c")
+"states/Falling UpBlock Left/position" = Vector2(395, 53)
+"states/Falling UpBlock Right/node" = SubResource("AnimationNodeAnimation_apy1y")
+"states/Falling UpBlock Right/position" = Vector2(641, 53)
+states/Start/position = Vector2(517, 162)
+transitions = ["Start", "Falling UpBlock Left", SubResource("AnimationNodeStateMachineTransition_3lmkh"), "Falling UpBlock Left", "Falling UpBlock Right", SubResource("AnimationNodeStateMachineTransition_dsf23"), "Falling UpBlock Right", "Falling UpBlock Left", SubResource("AnimationNodeStateMachineTransition_e05so")]
+graph_offset = Vector2(-27, -66)

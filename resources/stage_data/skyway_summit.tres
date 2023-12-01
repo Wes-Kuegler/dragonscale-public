@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="StageData" load_steps=3 format=3 uid="uid://cmx2y5fdtrinh"]
+
+[ext_resource type="Script" path="res://scripts/resources/stage_data.gd" id="1_obebo"]
+[ext_resource type="AudioStream" uid="uid://v2or1ych4dfm" path="res://assets/music/gothic tennis court 2023-11-26 1141.ogg" id="2_xtuyu"]
+
+[resource]
+script = ExtResource("1_obebo")
+id = 21.0
+name = "Skyway Summit"
+stage_track = ExtResource("2_xtuyu")
+scene_path = "res://scenes/stages/skyway_summit.tscn"

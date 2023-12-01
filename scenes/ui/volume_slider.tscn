@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://cvkjktdkwhrq8"]
+
+[ext_resource type="Theme" uid="uid://bo07iel4au107" path="res://resources/ui_theme.tres" id="1_l38q7"]
+
+[node name="VolumeHSlider" type="HSlider"]
+offset_right = 123.0
+offset_bottom = 26.0
+theme = ExtResource("1_l38q7")
+value = 50.0

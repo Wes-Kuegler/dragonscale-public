@@ -1,0 +1,147 @@
+[gd_scene load_steps=8 format=3 uid="uid://c0unrlul8op53"]
+
+[ext_resource type="PackedScene" uid="uid://cc0pedm86bkyb" path="res://scenes/characters/skellington.tscn" id="1_lvs03"]
+[ext_resource type="PackedScene" uid="uid://bviprvkkjrvo1" path="res://scenes/characters/player.tscn" id="2_c2x31"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i1b71"]
+size = Vector2(624, 50)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d87lr"]
+size = Vector2(104, 6)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7ec4q"]
+size = Vector2(104, 14)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w34uy"]
+size = Vector2(90, 67)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nynqh"]
+size = Vector2(90, 89)
+
+[node name="SpikeTest" type="Node2D"]
+
+[node name="StagePiece" type="StaticBody2D" parent="."]
+position = Vector2(105, 330)
+collision_layer = 4
+collision_mask = 0
+metadata/_edit_group_ = true
+
+[node name="ColorRect" type="ColorRect" parent="StagePiece"]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -105.0
+offset_top = -30.0
+offset_right = 519.0
+offset_bottom = 21.0
+grow_horizontal = 2
+grow_vertical = 0
+color = Color(0.231373, 0.407843, 0.027451, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StagePiece"]
+visible = false
+position = Vector2(207, -5)
+shape = SubResource("RectangleShape2D_i1b71")
+
+[node name="SpikePiece" type="StaticBody2D" parent="."]
+position = Vector2(157, 297)
+collision_layer = 32
+collision_mask = 0
+metadata/_edit_group_ = true
+
+[node name="ColorRect" type="ColorRect" parent="SpikePiece"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -52.0
+offset_top = -3.0
+offset_right = 52.0
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpikePiece"]
+visible = false
+shape = SubResource("RectangleShape2D_d87lr")
+
+[node name="SpikePiece2" type="StaticBody2D" parent="."]
+position = Vector2(339, 279)
+rotation = 1.5708
+collision_layer = 32
+collision_mask = 0
+metadata/_edit_group_ = true
+
+[node name="ColorRect" type="ColorRect" parent="SpikePiece2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -52.0
+offset_top = -3.0
+offset_right = 52.0
+offset_bottom = 11.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpikePiece2"]
+position = Vector2(0, 4)
+shape = SubResource("RectangleShape2D_7ec4q")
+
+[node name="StagePiece3" type="StaticBody2D" parent="."]
+position = Vector2(45, 278)
+collision_layer = 4
+collision_mask = 0
+metadata/_edit_group_ = true
+
+[node name="ColorRect" type="ColorRect" parent="StagePiece3"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -45.0
+offset_top = -45.0
+offset_right = 45.0
+offset_bottom = 45.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.231373, 0.407843, 0.027451, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StagePiece3"]
+position = Vector2(0, -11.5)
+shape = SubResource("RectangleShape2D_w34uy")
+
+[node name="StagePiece4" type="StaticBody2D" parent="."]
+position = Vector2(384, 256)
+collision_layer = 4
+collision_mask = 0
+metadata/_edit_group_ = true
+
+[node name="ColorRect" type="ColorRect" parent="StagePiece4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -45.0
+offset_top = -45.0
+offset_right = 45.0
+offset_bottom = 45.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.231373, 0.407843, 0.027451, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StagePiece4"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_nynqh")
+
+[node name="Mob" parent="." instance=ExtResource("1_lvs03")]
+position = Vector2(528, 282)
+mob_effect = 1
+
+[node name="Player" parent="." instance=ExtResource("2_c2x31")]
+position = Vector2(43, 214)

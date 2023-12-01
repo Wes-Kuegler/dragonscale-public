@@ -1,0 +1,59 @@
+[gd_scene load_steps=10 format=3 uid="uid://dq4v810pl5m0b"]
+
+[ext_resource type="Texture2D" uid="uid://dc6gvffeuu7pk" path="res://assets/art/tiles/assets.png" id="1_5kkoc"]
+[ext_resource type="Script" path="res://scripts/objects/fireball_emitter.gd" id="1_8kk8q"]
+[ext_resource type="PackedScene" uid="uid://drl1w5dj1npey" path="res://scenes/objects/fireball.tscn" id="2_npswp"]
+[ext_resource type="AudioStream" uid="uid://ciwaurda5c1lh" path="res://assets/sounds/Retro Impact LoFi 09.wav" id="4_0w5n7"]
+[ext_resource type="Texture2D" uid="uid://b7whpdaxvf2mo" path="res://assets/art/objects/fireball.png" id="4_pui17"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_up8ny"]
+atlas = ExtResource("1_5kkoc")
+region = Rect2(200, 136, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r10dy"]
+atlas = ExtResource("4_pui17")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i1lst"]
+size = Vector2(32, 32)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wl3r8"]
+radius = 268.0
+height = 1534.0
+
+[node name="FireballEmitter" type="StaticBody2D"]
+z_index = 1
+collision_layer = 16
+collision_mask = 0
+script = ExtResource("1_8kk8q")
+fireball_scene = ExtResource("2_npswp")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = SubResource("AtlasTexture_up8ny")
+
+[node name="Sprite2D" type="Sprite2D" parent="Sprite2D"]
+texture = SubResource("AtlasTexture_r10dy")
+
+[node name="ShootTimer" type="Timer" parent="."]
+autostart = true
+
+[node name="FireballSoundPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_0w5n7")
+volume_db = -10.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("RectangleShape2D_i1lst")
+
+[node name="PlayerDetector" type="Area2D" parent="."]
+visible = false
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetector"]
+rotation = -1.57079
+shape = SubResource("CapsuleShape2D_wl3r8")
+
+[connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer_timeout"]
+[connection signal="body_entered" from="PlayerDetector" to="." method="_on_player_detector_body_entered"]
+[connection signal="body_exited" from="PlayerDetector" to="." method="_on_player_detector_body_exited"]
