@@ -44,7 +44,7 @@ layout_mode = 2
 layout_mode = 2
 alignment = 1
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+[node name="VictoryLabel" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_styles/normal = ExtResource("4_kcakg")
@@ -103,7 +103,7 @@ text = "Stage Select"
 [node name="EndButton" type="Button" parent="MarginContainer/VBoxContainer"]
 visible = false
 layout_mode = 2
-text = "Finish Game"
+text = "End"
 
 [connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/RestartButton" to="." method="_on_button_pressed"]

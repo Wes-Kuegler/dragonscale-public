@@ -11,14 +11,17 @@ enum SHOOT_DIRECTION
 @onready var fireball_sound_player = $FireballSoundPlayer
 @onready var shoot_timer = $ShootTimer
 
-var shooting:= false
+@export var shooting:= false
 
+func _ready():
+	call_deferred("_on_shoot_timer_timeout")
+	
 func shoot():
 	var fireball = fireball_scene.instantiate() as Fireball
 	fireball.global_position = global_position
 	fireball.direction = get_shoot_dir()
 	get_parent().add_child(fireball)
-	fireball_sound_player.pitch_scale = randf_range(.8, 1)
+#	fireball_sound_player.pitch_scale = randf_range(.9, 1)
 	fireball_sound_player.play()
 	
 func get_shoot_dir() -> Vector2:
@@ -36,6 +39,10 @@ func get_shoot_dir() -> Vector2:
 
 func _on_shoot_timer_timeout():
 	if shooting:
+		shoot()
+		await get_tree().create_timer(.18).timeout
+		shoot()
+		await get_tree().create_timer(.18).timeout
 		shoot()
 
 func _on_player_detector_body_entered(body):

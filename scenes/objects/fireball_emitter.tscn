@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dq4v810pl5m0b"]
+[gd_scene load_steps=11 format=3 uid="uid://dq4v810pl5m0b"]
 
 [ext_resource type="Texture2D" uid="uid://dc6gvffeuu7pk" path="res://assets/art/tiles/assets.png" id="1_5kkoc"]
 [ext_resource type="Script" path="res://scripts/objects/fireball_emitter.gd" id="1_8kk8q"]
@@ -13,6 +13,11 @@ region = Rect2(200, 136, 16, 16)
 [sub_resource type="AtlasTexture" id="AtlasTexture_r10dy"]
 atlas = ExtResource("4_pui17")
 region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_ga7xt"]
+streams_count = 1
+stream_0/stream = ExtResource("4_0w5n7")
+stream_0/weight = 1.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i1lst"]
 size = Vector2(32, 32)
@@ -36,11 +41,13 @@ texture = SubResource("AtlasTexture_up8ny")
 texture = SubResource("AtlasTexture_r10dy")
 
 [node name="ShootTimer" type="Timer" parent="."]
+wait_time = 2.0
 autostart = true
 
 [node name="FireballSoundPlayer" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("4_0w5n7")
+stream = SubResource("AudioStreamRandomizer_ga7xt")
 volume_db = -10.0
+max_polyphony = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false

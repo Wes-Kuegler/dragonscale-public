@@ -18,7 +18,9 @@ var dragon_crying = true
 func _ready():
 	call_deferred("start_animation")
 
-func start_animation():
+func start_animation(): 
+	SaveManager.save_data.outro_played = true
+	SaveManager.save_player_data()
 	var fade_time = 1
 	Fade.fade_in(fade_time, Color.BLACK, "Diamond")
 	await get_tree().create_timer(fade_time).timeout

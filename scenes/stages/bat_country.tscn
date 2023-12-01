@@ -39,10 +39,12 @@ layer_0/tile_data = PackedInt32Array(720912, 327681, 7, 720913, 196609, 1, 72091
 [node name="FireballEmitter2" parent="." instance=ExtResource("5_2g4va")]
 position = Vector2(2287, 1008)
 shoot_direction = 1
+shooting = true
 
 [node name="FireballEmitter3" parent="." instance=ExtResource("5_2g4va")]
 position = Vector2(2640, 912)
 shoot_direction = 1
+shooting = true
 
 [node name="KillBox" parent="." instance=ExtResource("4_w2w1f")]
 position = Vector2(1672, 558)

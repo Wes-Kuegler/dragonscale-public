@@ -1,3 +1,3 @@
 rm ./export/windows/dragonscale.zip
-zip ./export/windows/dragonscale.zip ./export/windows/dragonscale.exe ./export/windows/dragonscale.pck
+zip -j ./export/windows/dragonscale.zip ./export/windows/dragonscale.exe ./export/windows/dragonscale.pck
 butler push ./export/windows/dragonscale.zip marsoupial/dragonscale:windows

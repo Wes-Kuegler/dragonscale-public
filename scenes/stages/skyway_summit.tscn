@@ -34,6 +34,17 @@ text = "Glide for extra distance
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="JumpLabel5" type="Label" parent="Labels"]
+offset_left = 3136.0
+offset_top = 135.0
+offset_right = 3415.0
+offset_bottom = 176.0
+theme = ExtResource("4_1i3qf")
+text = "...or to slow down.
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="JumpLabel3" type="Label" parent="Labels"]
 offset_left = 987.0
 offset_top = 388.0
